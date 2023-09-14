@@ -26,8 +26,8 @@ It should allow the user to:
     2. Clear any existing value (eg. with a text box)
     3. Type the text `doge`
     4. Hit enter
-- [ ] Download the meme by clicking on a button
-  - [ ] The button element needs to contain the text `Download`
+- [x] Download the meme by clicking on a button
+  - [x] The button element needs to contain the text `Download`
 
 ## Stretch goals:
 

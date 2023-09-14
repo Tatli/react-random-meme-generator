@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import DownloadButton from './DownloadButton';
 import MemeForm from './MemeForm';
 import Preview from './Preview';
 
@@ -41,6 +42,7 @@ export default function App() {
         setMemeTemplateText={setMemeTemplateText}
         setDisplayedMeme={setDisplayedMeme}
       />
+      <DownloadButton apiUrl={displayedMeme} />
     </>
   );
 }

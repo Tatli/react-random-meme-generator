@@ -37,6 +37,7 @@ export default function MemeForm({
           id="memeTemplateText"
         />
       </label>
+      <br />
       <button
         data-test-id="generate-meme"
         onClick={(e) =>
@@ -51,7 +52,6 @@ export default function MemeForm({
       >
         Generate
       </button>
-      {/* <button onClick={(e) => fetch(displayedMeme).then()}>Download</button> */}
     </form>
   );
 }
