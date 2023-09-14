@@ -1,15 +1,14 @@
 import { useState } from 'react';
+import MemeForm from './MemeForm';
 import Preview from './Preview';
 
 export default function App() {
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
   const [memeTemplateText, setMemeTemplateText] = useState('');
+  const [imageBlob, setImageBlob] = useState('');
   const [displayedMeme, setDisplayedMeme] = useState(
     'https://api.memegen.link/images/yodawg/yo_dawg/I_heard_you_like_memes',
-  );
-  const [previewMeme, setPreviewMeme] = useState(
-    'https://api.memegen.link/images/preview.jpg?template=iw&lines[]=live+preview&lines[]=while+typingpnp',
   );
 
   // const meme = fetch(
@@ -33,48 +32,15 @@ export default function App() {
 
       <img data-test-id="meme-image" src={displayedMeme} />
 
-      <form onSubmit={(e) => e.preventDefault()}>
-        <label htmlFor="topText">
-          Top text
-          <input
-            value={topText}
-            onChange={(e) => setTopText(e.currentTarget.value)}
-            id="topText"
-          />
-        </label>
-        <br />
-        <label htmlFor="bottomText">
-          Bottom text
-          <input
-            value={bottomText}
-            onChange={(e) => setBottomText(e.currentTarget.value)}
-            id="bottomText"
-          />
-        </label>
-        <br />
-        <label htmlFor="memeTemplateText">
-          Meme template
-          <input
-            value={memeTemplateText}
-            onChange={(e) => setMemeTemplateText(e.currentTarget.value)}
-            id="memeTemplateText"
-          />
-        </label>
-        <button
-          data-test-id="generate-meme"
-          onClick={(e) =>
-            setDisplayedMeme(
-              `https://api.memegen.link/images${
-                memeTemplateText ? `/${memeTemplateText}` : ''
-              }${topText ? `/${topText}` : ''}${
-                topText && bottomText ? `/${bottomText}` : ''
-              }${bottomText && !topText ? `/ /${bottomText}` : ''}`,
-            )
-          }
-        >
-          Generate
-        </button>
-      </form>
+      <MemeForm
+        memeTemplateText={memeTemplateText}
+        topText={topText}
+        bottomText={bottomText}
+        setBottomText={setBottomText}
+        setTopText={setTopText}
+        setMemeTemplateText={setMemeTemplateText}
+        setDisplayedMeme={setDisplayedMeme}
+      />
     </>
   );
 }
