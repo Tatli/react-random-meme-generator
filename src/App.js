@@ -5,8 +5,9 @@ export default function App() {
   const [bottomText, setBottomText] = useState('');
   const [memeTemplateText, setMemeTemplateText] = useState('');
   const [displayedMeme, setDisplayedMeme] = useState(
-    'https://api.memegen.link/images/fry/query_parameter/example.png?api_key=myapikey42',
+    'https://api.memegen.link/images/yodawg/yo_dawg/I_heard_you_like_memes',
   );
+  const [previewMeme, setPreviewMeme] = useState('');
 
   // const meme = fetch(
   //   'https://api.memegen.link/images/fry/query_parameter/example.png?api_key=myapikey42',
@@ -21,19 +22,9 @@ export default function App() {
     <>
       <h2>Random Meme Generator</h2>
 
-      <img
-        data-test-id="meme-image"
-        src={
-          'https://api.memegen.link/images/' +
-          { memeTemplateText } +
-          '/' +
-          { topText } +
-          '/' +
-          { bottomText }
-        }
-      />
+      <img data-test-id="meme-image" src={displayedMeme} />
 
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="topText">
           Top text
           <input
@@ -60,6 +51,20 @@ export default function App() {
             id="memeTemplateText"
           />
         </label>
+        <button
+          data-test-id="generate-meme"
+          onClick={(e) =>
+            setDisplayedMeme(
+              `https://api.memegen.link/images${
+                memeTemplateText ? `/${memeTemplateText}` : ''
+              }${topText ? `/${topText}` : ''}${
+                topText && bottomText ? `/${bottomText}` : ''
+              }${bottomText && !topText ? `/ /${bottomText}` : ''}`,
+            )
+          }
+        >
+          Generate
+        </button>
       </form>
     </>
   );

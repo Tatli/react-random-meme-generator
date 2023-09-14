@@ -2,7 +2,7 @@ Create a web app with React that allows for users to generate and download memes
 
 It should allow the user to:
 
-- [ ] Enter text for the top and bottom of the meme
+- [x] Enter text for the top and bottom of the meme
 
   - [x] Create an input field for each and hook their states
 
@@ -18,8 +18,8 @@ It should allow the user to:
   We are not fetching, we are using an API
    -->
   - [x] The image element needs to have an html attribute set as follows: `data-test-id="meme-image"`
-    - [ ] This image element should show a working image when the page first loads
-- [ ] Change the meme template (the background image)
+    - [x] This image element should show a working image when the page first loads
+- [x] Change the meme template (the background image)
   - [x] The meme template selector element needs to have a label element associated with it containing the text `Meme template`
   - [ ] If the user follows the steps below, the `doge` meme template needs to be selected:
     1. Click on the label of the meme template selector
@@ -31,8 +31,8 @@ It should allow the user to:
 
 ## Stretch goals:
 
-- [ ] Reduce the amount of times a meme image is generated (don't generate it every time a user presses a key). Instead, generate a new image when the user clicks a button
-  - [ ] The button element needs to have an html attribute set as follows: `data-test-id="generate-meme"`
+- [x] Reduce the amount of times a meme image is generated (don't generate it every time a user presses a key). Instead, generate a new image when the user clicks a button
+  - [x] The button element needs to have an html attribute set as follows: `data-test-id="generate-meme"`
 - [ ] Use a `#`, `?` and `/` in your meme text
 - [ ] Save a history of generated meme top text, bottom text, and meme photo type. This history should reappear on refresh of the application.
 - [ ] Make your application work offline (without a network connection) with the [PWA capabilities built in to `create-react-app`](https://create-react-app.dev/docs/making-a-progressive-web-app/). Any meme images that were generated while online in the application should be available to be generated again offline as well.
