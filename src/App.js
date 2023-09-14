@@ -7,7 +7,9 @@ export default function App() {
   const [displayedMeme, setDisplayedMeme] = useState(
     'https://api.memegen.link/images/yodawg/yo_dawg/I_heard_you_like_memes',
   );
-  const [previewMeme, setPreviewMeme] = useState('');
+  const [previewMeme, setPreviewMeme] = useState(
+    'https://api.memegen.link/images/preview.jpg?template=iw&lines[]=live+preview&lines[]=while+typingpnp',
+  );
 
   // const meme = fetch(
   //   'https://api.memegen.link/images/fry/query_parameter/example.png?api_key=myapikey42',
@@ -22,6 +24,10 @@ export default function App() {
     <>
       <h2>Random Meme Generator</h2>
 
+      <img
+        id="preview"
+        src={`https://api.memegen.link/images/preview.jpg?template=${memeTemplateText}&lines[]=${topText}&lines[]=${bottomText}`}
+      />
       <img data-test-id="meme-image" src={displayedMeme} />
 
       <form onSubmit={(e) => e.preventDefault()}>
