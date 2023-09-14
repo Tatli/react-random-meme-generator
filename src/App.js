@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Preview from './Preview';
 
 export default function App() {
   const [topText, setTopText] = useState('');
@@ -24,10 +25,12 @@ export default function App() {
     <>
       <h2>Random Meme Generator</h2>
 
-      <img
-        id="preview"
-        src={`https://api.memegen.link/images/preview.jpg?template=${memeTemplateText}&lines[]=${topText}&lines[]=${bottomText}`}
+      <Preview
+        memeTemplateText={memeTemplateText}
+        topText={topText}
+        bottomText={bottomText}
       />
+
       <img data-test-id="meme-image" src={displayedMeme} />
 
       <form onSubmit={(e) => e.preventDefault()}>
