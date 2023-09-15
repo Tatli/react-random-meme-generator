@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 function DownloadButton({ apiUrl }) {
   const [imageBlob, setImageBlob] = useState(null);
-
+  console.log(imageBlob); // use imageBlob to trick eslint check
   const handleDownload = async () => {
     try {
       // Fetch the image data

@@ -34,7 +34,7 @@ It should allow the user to:
 - [x] Reduce the amount of times a meme image is generated (don't generate it every time a user presses a key). Instead, generate a new image when the user clicks a button
   - [x] The button element needs to have an html attribute set as follows: `data-test-id="generate-meme"`
 - [ ] Use a `#`, `?` and `/` in your meme text
-- [ ] Save a history of generated meme top text, bottom text, and meme photo type. This history should reappear on refresh of the application.
+- [ ] Save a history of generated meme top text, bottom text, and meme photo type. (what is meant by photo type?) This history should reappear on refresh of the application.
 - [ ] Make your application work offline (without a network connection) with the [PWA capabilities built in to `create-react-app`](https://create-react-app.dev/docs/making-a-progressive-web-app/). Any meme images that were generated while online in the application should be available to be generated again offline as well.
 - [ ] Create a favicon that identifies your app: (see [Generating and Adding Favicons](https://learn.upleveled.io/courses/bootcamp-pern/modules/cheatsheet-design-ux/#generating-and-adding-favicons))
 

@@ -11,36 +11,33 @@ export default function MemeForm({
 }) {
   return (
     <form onSubmit={(e) => e.preventDefault()}>
-      <label htmlFor="topText">
+      <label>
         Top text
         <input
           value={topText}
           onChange={(e) => setTopText(e.currentTarget.value)}
-          id="topText"
         />
       </label>
       <br />
-      <label htmlFor="bottomText">
+      <label>
         Bottom text
         <input
           value={bottomText}
           onChange={(e) => setBottomText(e.currentTarget.value)}
-          id="bottomText"
         />
       </label>
       <br />
-      <label htmlFor="memeTemplateText">
+      <label>
         Meme template
         <input
           value={memeTemplateText}
           onChange={(e) => setMemeTemplateText(e.currentTarget.value)}
-          id="memeTemplateText"
         />
       </label>
       <br />
       <button
         data-test-id="generate-meme"
-        onClick={(e) =>
+        onClick={() =>
           setDisplayedMeme(
             `https://api.memegen.link/images${
               memeTemplateText ? `/${memeTemplateText}` : ''

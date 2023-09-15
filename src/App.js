@@ -7,7 +7,6 @@ export default function App() {
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
   const [memeTemplateText, setMemeTemplateText] = useState('');
-  const [imageBlob, setImageBlob] = useState('');
   const [displayedMeme, setDisplayedMeme] = useState(
     'https://api.memegen.link/images/yodawg/yo_dawg/I_heard_you_like_memes',
   );
@@ -31,7 +30,11 @@ export default function App() {
         bottomText={bottomText}
       />
 
-      <img data-test-id="meme-image" src={displayedMeme} />
+      <img
+        data-test-id="meme-image"
+        src={displayedMeme}
+        alt="A generated meme"
+      />
 
       <MemeForm
         memeTemplateText={memeTemplateText}
