@@ -9,6 +9,13 @@ export default function MemeForm({
   setMemeTemplateText,
   setDisplayedMeme,
 }) {
+  console.log(
+    `https://api.memegen.link/images${
+      memeTemplateText ? `/${memeTemplateText}` : ''
+    }${topText ? `/${topText.replace(/ /g, '_')}` : ''}${
+      topText && bottomText ? `/${bottomText.replace(/ /g, '_')}` : ''
+    }${bottomText && !topText ? `/ /${bottomText.replace(/ /g, '_')}` : ''}`,
+  );
   return (
     <form onSubmit={(e) => e.preventDefault()}>
       <label>
