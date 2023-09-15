@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import DownloadButton from './DownloadButton';
+import FunctionalityDescription from './FunctionalityDescription';
 import MemeForm from './MemeForm';
 import Preview from './Preview';
 
@@ -23,6 +24,8 @@ export default function App() {
   return (
     <>
       <h2>Random Meme Generator</h2>
+
+      <FunctionalityDescription />
 
       <Preview
         memeTemplateText={memeTemplateText}
