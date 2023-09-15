@@ -41,13 +41,11 @@ export default function MemeForm({
           setDisplayedMeme(
             `https://api.memegen.link/images${
               memeTemplateText ? `/${memeTemplateText}` : ''
-            }${topText ? `/${topText.replace(/ /g, '~p20')}` : ''}${
-              topText && bottomText
-                ? `/${bottomText.replace(/ /g, '~p20')}`
-                : ''
+            }${topText ? `/${topText.replace(/ /g, '_')}` : ''}${
+              topText && bottomText ? `/${bottomText.replace(/ /g, '_')}` : ''
             }${
               bottomText && !topText
-                ? `/ /${bottomText.replace(/ /g, '~p20')}`
+                ? `/ /${bottomText.replace(/ /g, '_')}`
                 : ''
             }`,
           )
