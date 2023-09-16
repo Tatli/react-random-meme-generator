@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-export default function Preview(props) {
-  return <img id="preview" src={props.displayedMeme} alt="meme preview" />;
+export default function Preview() {
+  const [initialMemeUrl, setInitialMemeUrl] = useState(
+    'https://api.memegen.link/images/doge/such_wow/much_meme',
+  );
+  return <img src={initialMemeUrl} alt="An initial meme" />;
 }

@@ -1,16 +1,6 @@
-import React from 'react';
-import { displayPartsToString } from 'typescript';
+import React, { useEffect, useState } from 'react';
 
-export default function MemeForm({
-  topText,
-  bottomText,
-  memeTemplateText,
-  memeUrl,
-  setTopText,
-  setBottomText,
-  setMemeTemplateText,
-  setMemeUrl,
-}) {
+export default function MemeForm({ setMemeFinalUrl }) {
   // console.log(
   //   `https://api.memegen.link/images${
   //     memeTemplateText ? `/${memeTemplateText}` : ''
@@ -18,11 +8,54 @@ export default function MemeForm({
   //     topText && bottomText ? `/${bottomText.replace(/ /g, '_')}` : ''
   //   }${bottomText && !topText ? `/ /${bottomText.replace(/ /g, '_')}` : ''}`,
   // );
-  // console.log(topText);
-  // console.log(bottomText);
-  console.log(memeUrl);
+
+  const [memeList, setMemeList] = useState([]);
+  const [memeTemplateSelected, setMemeTemplateSelected] = useState('yodawg');
+  const [topText, setTopText] = useState('');
+  const [bottomText, setBottomText] = useState('');
+
+  useEffect(() => {
+    async function fetchMemeTemplates() {
+      try {
+        const memeListResponse = await fetch(
+          'https://api.memegen.link/images/',
+        );
+        const jsonMemeList = await memeListResponse.json();
+        setMemeList(jsonMemeList);
+      } catch (error) {
+        console.error(error);
+        return [];
+      }
+    }
+
+    fetchMemeTemplates();
+  }, []);
+
   return (
     <form onSubmit={(e) => e.preventDefault()}>
+      {/* Meme Template Selection */}
+      <label>
+        Meme template
+        <select
+          onChange={(e) =>
+            setMemeTemplateSelected(
+              e.currentTarget.value.split(
+                'https://api.memegen.link/templates/',
+              )[1],
+            )
+          }
+        >
+          {memeList.map((meme, index) => (
+            <option key={`meme-${index}`} value={meme.template}>
+              {meme.template.split('https://api.memegen.link/templates/')[1]}{' '}
+              {/* // .split results in the following array: ["", "mytemplate"], with [1] you select the second part */}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <br />
+
       {/* Top Text Input */}
       <label>
         Top text
@@ -31,7 +64,9 @@ export default function MemeForm({
           onChange={(e) => setTopText(e.currentTarget.value)}
         />
       </label>
+
       <br />
+
       {/* Bottom Text Input */}
       <label>
         Bottom text
@@ -40,44 +75,27 @@ export default function MemeForm({
           onChange={(e) => setBottomText(e.currentTarget.value)}
         />
       </label>
+
       <br />
-      {/* Meme Template Selection */}
-      <label>
-        Meme template
-        <input
-          value={memeTemplateText}
-          onChange={(e) => setMemeTemplateText(e.currentTarget.value)}
-        />
-      </label>
-      <br />
-      {/* Set final Meme URL */}
-      {setMemeUrl(
-        `https://api.memegen.link/images${
-          memeTemplateText ? `/${memeTemplateText}` : ''
-        }${topText ? `/${topText.replace(/ /g, '_')}` : ''}${
-          topText && bottomText ? `/${bottomText.replace(/ /g, '_')}` : ''
-        }${
-          bottomText && !topText ? `/ /${bottomText.replace(/ /g, '_')}` : ''
-        }`,
-      )}
-      {/* <button
+
+      <button
         data-test-id="generate-meme"
         onClick={() =>
-          setMemeUrl(
+          setMemeFinalUrl(
             `https://api.memegen.link/images${
-              memeTemplateText ? `/${memeTemplateText}` : ''
-            }${topText ? `/${topText.replace(/ /g, '%20')}` : ''}${
-              topText && bottomText ? `/${bottomText.replace(/ /g, '%20')}` : ''
+              memeTemplateSelected ? `/${memeTemplateSelected}` : ''
+            }${topText ? `/${topText.replace(/ /g, '_')}` : ''}${
+              topText && bottomText ? `/${bottomText.replace(/ /g, '_')}` : ''
             }${
               bottomText && !topText
-                ? `/ /${bottomText.replace(/ /g, '%20')}`
+                ? `/ /${bottomText.replace(/ /g, '_')}`
                 : ''
             }`,
           )
         }
       >
         Generate
-      </button> */}
+      </button>
     </form>
   );
 }

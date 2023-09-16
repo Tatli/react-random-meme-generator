@@ -7,12 +7,7 @@ export default function FunctionalityDescription() {
       <ul>
         <li>
           <strong>MemeTemplate:</strong>
-          Choose your Meme template, such as:
-          <ul>
-            <li>yodawg</li>
-            <li>doge</li>
-            <li>fry</li>
-          </ul>
+          Select your Meme Template
         </li>
         <li>
           <strong>Top text:</strong>
