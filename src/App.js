@@ -19,7 +19,7 @@ export default function App() {
       {/* <Preview /> */}
       <MemeForm setMemeFinalUrl={setMemeFinalUrl} />
       <Meme memeFinalUrl={memeFinalUrl} />
-      <DownloadButton />
+      <DownloadButton apiUrl={memeFinalUrl} />
     </>
   );
 }
