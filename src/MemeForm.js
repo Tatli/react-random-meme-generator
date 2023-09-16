@@ -10,7 +10,7 @@ export default function MemeForm({ setMemeFinalUrl }) {
   // );
 
   const [memeList, setMemeList] = useState([]);
-  const [memeTemplateSelected, setMemeTemplateSelected] = useState('yodawg');
+  const [memeTemplateSelected, setMemeTemplateSelected] = useState('aag');
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
 
@@ -84,11 +84,29 @@ export default function MemeForm({ setMemeFinalUrl }) {
           setMemeFinalUrl(
             `https://api.memegen.link/images${
               memeTemplateSelected ? `/${memeTemplateSelected}` : ''
-            }${topText ? `/${topText.replace(/ /g, '_')}` : ''}${
-              topText && bottomText ? `/${bottomText.replace(/ /g, '_')}` : ''
+            }${
+              topText
+                ? `/${topText
+                    .replace(/ /g, '_')
+                    .replace(/#/g, '~h')
+                    .replace(/\//g, '~s')
+                    .replace(/\?/g, '~q')}`
+                : ''
+            }${
+              topText && bottomText
+                ? `/${bottomText
+                    .replace(/ /g, '_')
+                    .replace(/#/g, '~h')
+                    .replace(/\//g, '~s')
+                    .replace(/\?/g, '~q')}`
+                : ''
             }${
               bottomText && !topText
-                ? `/ /${bottomText.replace(/ /g, '_')}`
+                ? `/ /${bottomText
+                    .replace(/ /g, '_')
+                    .replace(/#/g, '~h')
+                    .replace(/\//g, '~s')
+                    .replace(/\?/g, '~q')}`
                 : ''
             }`,
           )
