@@ -8,7 +8,7 @@ export default function App() {
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
   const [memeTemplateText, setMemeTemplateText] = useState('');
-  const [displayedMeme, setDisplayedMeme] = useState(
+  const [memeUrl, setMemeUrl] = useState(
     'https://api.memegen.link/images/yodawg/yo_dawg/I_heard_you_like_memes',
   );
 
@@ -17,7 +17,7 @@ export default function App() {
   // )
   //   .then((response) => response.json())
   //   .then((data) => console.log(data){
-  //     setDisplayedMeme(data.(what?))
+  //     setMemeUrl(data.(what?))
   //   })
   //   .catch((error) => console.error(error));
 
@@ -27,28 +27,21 @@ export default function App() {
 
       <FunctionalityDescription />
 
-      <Preview
-        memeTemplateText={memeTemplateText}
-        topText={topText}
-        bottomText={bottomText}
-      />
+      {/* <Preview displayedMeme={displayedMeme} /> */}
 
-      <img
-        data-test-id="meme-image"
-        src={displayedMeme}
-        alt="A generated meme"
-      />
+      <img data-test-id="meme-image" src={memeUrl} alt="A generated meme" />
 
       <MemeForm
         memeTemplateText={memeTemplateText}
         topText={topText}
         bottomText={bottomText}
+        displayedMeme={memeUrl}
         setBottomText={setBottomText}
         setTopText={setTopText}
         setMemeTemplateText={setMemeTemplateText}
-        setDisplayedMeme={setDisplayedMeme}
+        setMemeUrl={setMemeUrl}
       />
-      <DownloadButton apiUrl={displayedMeme} />
+      <DownloadButton apiUrl={memeUrl} />
     </>
   );
 }

@@ -1,16 +1,29 @@
 import React from 'react';
+import { displayPartsToString } from 'typescript';
 
 export default function MemeForm({
   topText,
   bottomText,
   memeTemplateText,
+  memeUrl,
   setTopText,
   setBottomText,
   setMemeTemplateText,
-  setDisplayedMeme,
+  setMemeUrl,
 }) {
+  // console.log(
+  //   `https://api.memegen.link/images${
+  //     memeTemplateText ? `/${memeTemplateText}` : ''
+  //   }${topText ? `/${topText.replace(/ /g, '_')}` : ''}${
+  //     topText && bottomText ? `/${bottomText.replace(/ /g, '_')}` : ''
+  //   }${bottomText && !topText ? `/ /${bottomText.replace(/ /g, '_')}` : ''}`,
+  // );
+  // console.log(topText);
+  // console.log(bottomText);
+  console.log(memeUrl);
   return (
     <form onSubmit={(e) => e.preventDefault()}>
+      {/* Top Text Input */}
       <label>
         Top text
         <input
@@ -19,6 +32,7 @@ export default function MemeForm({
         />
       </label>
       <br />
+      {/* Bottom Text Input */}
       <label>
         Bottom text
         <input
@@ -27,6 +41,7 @@ export default function MemeForm({
         />
       </label>
       <br />
+      {/* Meme Template Selection */}
       <label>
         Meme template
         <input
@@ -35,10 +50,20 @@ export default function MemeForm({
         />
       </label>
       <br />
-      <button
+      {/* Set final Meme URL */}
+      {setMemeUrl(
+        `https://api.memegen.link/images${
+          memeTemplateText ? `/${memeTemplateText}` : ''
+        }${topText ? `/${topText.replace(/ /g, '_')}` : ''}${
+          topText && bottomText ? `/${bottomText.replace(/ /g, '_')}` : ''
+        }${
+          bottomText && !topText ? `/ /${bottomText.replace(/ /g, '_')}` : ''
+        }`,
+      )}
+      {/* <button
         data-test-id="generate-meme"
         onClick={() =>
-          setDisplayedMeme(
+          setMemeUrl(
             `https://api.memegen.link/images${
               memeTemplateText ? `/${memeTemplateText}` : ''
             }${topText ? `/${topText.replace(/ /g, '%20')}` : ''}${
@@ -52,7 +77,7 @@ export default function MemeForm({
         }
       >
         Generate
-      </button>
+      </button> */}
     </form>
   );
 }
