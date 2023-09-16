@@ -12,6 +12,17 @@ export default function App() {
     'https://api.memegen.link/images/yodawg/yo_dawg/I_heard_you_like_memes',
   );
 
+  // const memeList = fetch('https://api.memegen.link/images/')
+  //   .then((response) => response.json())
+  //   .then((data) => console.log(JSON.stringify(data)))
+  //   .catch((error) => console.error(error));
+
+  async function getMemeList() {
+    const memeList = await fetch('https://api.memegen.link/images/');
+    const jsonMemeList = await response(memeList.json());
+    console.log(JSON.stringify(jsonMemeList));
+  }
+
   // const meme = fetch(
   //   'https://api.memegen.link/images/fry/query_parameter/example.png?api_key=myapikey42',
   // )
@@ -30,6 +41,13 @@ export default function App() {
       {/* <Preview displayedMeme={displayedMeme} /> */}
 
       <img data-test-id="meme-image" src={memeUrl} alt="A generated meme" />
+
+      {getMemeList()}
+      <select>
+        {/* {memeList.map((meme) => (
+          <option value={meme.template}>{meme.template}</option>
+        ))} */}
+      </select>
 
       <MemeForm
         memeTemplateText={memeTemplateText}
