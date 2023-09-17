@@ -87,7 +87,7 @@ export default function MemeForm({ setMemeFinalUrl }) {
             }${
               topText
                 ? `/${topText
-                    .replace(/ /g, '_')
+                    .replace(/ /g, '%20')
                     .replace(/#/g, '~h')
                     .replace(/\//g, '~s')
                     .replace(/\?/g, '~q')}`
@@ -95,7 +95,7 @@ export default function MemeForm({ setMemeFinalUrl }) {
             }${
               topText && bottomText
                 ? `/${bottomText
-                    .replace(/ /g, '_')
+                    .replace(/ /g, '%20')
                     .replace(/#/g, '~h')
                     .replace(/\//g, '~s')
                     .replace(/\?/g, '~q')}`
@@ -103,7 +103,7 @@ export default function MemeForm({ setMemeFinalUrl }) {
             }${
               bottomText && !topText
                 ? `/ /${bottomText
-                    .replace(/ /g, '_')
+                    .replace(/ /g, '%20')
                     .replace(/#/g, '~h')
                     .replace(/\//g, '~s')
                     .replace(/\?/g, '~q')}`
