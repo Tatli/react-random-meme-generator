@@ -21,7 +21,7 @@ function DownloadButton({ apiUrl }) {
       link.href = URL.createObjectURL(blob);
       // Set the desired filename here
       // Who the eff thought using the download property for file name specification was a good idea?
-      link.download = 'meme.jpg';
+      link.download = 'meme';
 
       // Trigger a click event on the anchor element
       document.body.appendChild(link);

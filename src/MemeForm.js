@@ -85,30 +85,37 @@ export default function MemeForm({ setMemeFinalUrl }) {
             `https://api.memegen.link/images/${
               memeTemplateSelected ? `${memeTemplateSelected}/` : ''
             }${
-              topText
+              // top text only
+              topText && !bottomText
                 ? `${topText
                     .replace(/ /g, '%20')
                     .replace(/#/g, '~h')
                     .replace(/\//g, '~s')
-                    .replace(/\?/g, '~q')}/`
+                    .replace(/\?/g, '~q')}.png`
                 : ''
             }${
+              // top and bottom text
               topText && bottomText
-                ? `${bottomText
+                ? `${topText
                     .replace(/ /g, '%20')
                     .replace(/#/g, '~h')
                     .replace(/\//g, '~s')
-                    .replace(/\?/g, '~q')}/`
+                    .replace(/\?/g, '~q')}/${bottomText
+                    .replace(/ /g, '%20')
+                    .replace(/#/g, '~h')
+                    .replace(/\//g, '~s')
+                    .replace(/\?/g, '~q')}.png`
                 : ''
             }${
+              // bottom text only
               bottomText && !topText
                 ? `%20/${bottomText
                     .replace(/ /g, '%20')
                     .replace(/#/g, '~h')
                     .replace(/\//g, '~s')
-                    .replace(/\?/g, '~q')}`
+                    .replace(/\?/g, '~q')}.png`
                 : ''
-            }.png`,
+            }`,
           )
         }
       >
