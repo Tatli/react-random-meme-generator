@@ -82,33 +82,33 @@ export default function MemeForm({ setMemeFinalUrl }) {
         data-test-id="generate-meme"
         onClick={() =>
           setMemeFinalUrl(
-            `https://api.memegen.link/images${
-              memeTemplateSelected ? `/${memeTemplateSelected}` : ''
+            `https://api.memegen.link/images/${
+              memeTemplateSelected ? `${memeTemplateSelected}/` : ''
             }${
               topText
-                ? `/${topText
+                ? `${topText
                     .replace(/ /g, '%20')
                     .replace(/#/g, '~h')
                     .replace(/\//g, '~s')
-                    .replace(/\?/g, '~q')}`
+                    .replace(/\?/g, '~q')}/`
                 : ''
             }${
               topText && bottomText
-                ? `/${bottomText
+                ? `${bottomText
                     .replace(/ /g, '%20')
                     .replace(/#/g, '~h')
                     .replace(/\//g, '~s')
-                    .replace(/\?/g, '~q')}`
+                    .replace(/\?/g, '~q')}/`
                 : ''
             }${
               bottomText && !topText
-                ? `/ /${bottomText
+                ? `%20/${bottomText
                     .replace(/ /g, '%20')
                     .replace(/#/g, '~h')
                     .replace(/\//g, '~s')
                     .replace(/\?/g, '~q')}`
                 : ''
-            }`,
+            }.png`,
           )
         }
       >
